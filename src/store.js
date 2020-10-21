@@ -118,7 +118,7 @@ const mutations = {
 const actions = {
   load: ({ commit }) => {
     commit("UI_START_LOADING");
-    let { amt, ccy, firstName, lastName, email, phone, address, city, country, env = "prod", id, num, title } = utils.getQueryStringValues();
+    let { amt, ccy, firstName, lastName, email, phone, address, city, country, env = "prod", id, num, title, subTitle } = utils.getQueryStringValues();
 
     function addConfigErrorIf(fn, message) {
       if (fn()) {
@@ -156,13 +156,13 @@ const actions = {
       JPY: "BAJ",
       SEK: "BAS",
       USD: "BAU"
-    }
+    };
     let portalCode = portalCodes[ccy];
 
     commit("PAYMENT_INIT", { amount: parseFloat(amt), firstName, lastName, email, phone, address, city, country, callbackUrl, callbackId, type, id, num });
 
     title = title ?? "Beyond Academy";
-    let subTitle = `Payment Number: ${num}`;
+    subTitle = subTitle ?? `Payment Number: ${num}`;
     commit("UI_INIT", { title, subTitle });
 
     const recipientPromise = dataService.getRecipient(portalCode, env);
