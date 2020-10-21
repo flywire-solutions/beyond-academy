@@ -118,7 +118,7 @@ const mutations = {
 const actions = {
   load: ({ commit }) => {
     commit("UI_START_LOADING");
-    let { amount, ccy, firstName, lastName, email, phone, address, city, country, env = "prod", id, num, title } = utils.getQueryStringValues();
+    let { amt, ccy, firstName, lastName, email, phone, address, city, country, env = "prod", id, num, title } = utils.getQueryStringValues();
 
     function addConfigErrorIf(fn, message) {
       if (fn()) {
@@ -131,8 +131,8 @@ const actions = {
     addConfigErrorIf(() => !id, "Zoho CRM entity id not supplied");
     addConfigErrorIf(() => !num, "Payment number not supplied");
     addConfigErrorIf(() => num && (isNaN(num) || parseInt(num) < 1 || parseInt(num) > 1), `Invalid payment number (${num})`);
-    addConfigErrorIf(() => !amount, "Amount not supplied");
-    addConfigErrorIf(() => amount && (isNaN(amount) || parseFloat(amount) <= 0), `Invalid amount (${amount})`);
+    addConfigErrorIf(() => !amt, "Amount not supplied");
+    addConfigErrorIf(() => amt && (isNaN(amt) || parseFloat(amt) <= 0), `Invalid amount (${amt})`);
 
     let type = "";
     let callbackUrl = "";
@@ -159,10 +159,10 @@ const actions = {
     }
     let portalCode = portalCodes[ccy];
 
-    commit("PAYMENT_INIT", { amount: parseFloat(amount), firstName, lastName, email, phone, address, city, country, callbackUrl, callbackId, type, id, num });
+    commit("PAYMENT_INIT", { amount: parseFloat(amt), firstName, lastName, email, phone, address, city, country, callbackUrl, callbackId, type, id, num });
 
     title = title ?? "Beyond Academy";
-    let subTitle = `Payment Num: ${num}`;
+    let subTitle = `Payment Number: ${num}`;
     commit("UI_INIT", { title, subTitle });
 
     const recipientPromise = dataService.getRecipient(portalCode, env);
