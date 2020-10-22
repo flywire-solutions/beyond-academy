@@ -1,6 +1,6 @@
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
-      ? '/beyond-academy/'
+      ? 'solutions/beyond-academy/'
       : '/',
     outputDir: 'docs'
   }

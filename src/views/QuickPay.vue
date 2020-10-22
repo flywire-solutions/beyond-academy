@@ -2,7 +2,7 @@
     <div class="quick-pay">
         <div class="card text-center">
             <div class="card-header">
-                <!-- <img src="@/assets/flywire.png" height="20px"/> -->
+                <img src="@/assets/flywire.png" height="20px"/>
             </div>
             <div class="card-body">
                 <img v-if="client.logo" :src="client.logo" :alt="client.name" />
@@ -101,7 +101,7 @@ export default {
 <style scoped lang="scss">
     .quick-pay {
         width: 400px;
-        margin: 0 auto;
+        margin: 50px auto;
 
         .card-body {
             padding-bottom: 0;
