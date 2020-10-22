@@ -2,7 +2,7 @@
     <div class="complete">
         <div class="card text-center">
             <div class="card-header">
-                <img src="@/assets/flywire.png" height="20px"/>
+                <!-- <img src="@/assets/flywire.png" height="20px"/> -->
             </div>
             <div class="card-body">
                 <img v-if="client.logo" :src="client.logo" :alt="client.name" />
@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
     .complete {
         width: 400px;
         margin: 50px auto;
