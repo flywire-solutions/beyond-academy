@@ -130,7 +130,7 @@ const actions = {
     addConfigErrorIf(() => ccy && (ccy.length != 3), `Invalid currency code supplied (${ccy})`);
     addConfigErrorIf(() => !id, "Zoho CRM entity id not supplied");
     addConfigErrorIf(() => !num, "Payment number not supplied");
-    addConfigErrorIf(() => num && (isNaN(num) || parseInt(num) < 1 || parseInt(num) > 1), `Invalid payment number (${num})`);
+    addConfigErrorIf(() => num && (isNaN(num) || parseInt(num) < 1 || parseInt(num) > 3), `Invalid payment number (${num})`);
     addConfigErrorIf(() => !amt, "Amount not supplied");
     addConfigErrorIf(() => amt && (isNaN(amt) || parseFloat(amt) <= 0), `Invalid amount (${amt})`);
 
